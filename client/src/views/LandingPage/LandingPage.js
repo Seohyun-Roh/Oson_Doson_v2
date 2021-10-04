@@ -1,6 +1,8 @@
 import React, {useEffect} from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom';
+import Gnb from '../../components/Gnb';
+import Footer from '../../components/Footer';
 
 function LandingPage(props) {
 
@@ -13,6 +15,8 @@ function LandingPage(props) {
         axios.get('/api/users/logout')
         .then(response => {
             if(response.data.success){
+                console.log(props)
+                console.log(response)
                 props.history.push("/login")
             } else{
                 alert('로그아웃에 실패하였습니다.')
@@ -28,7 +32,15 @@ function LandingPage(props) {
             <button onClick={onClickHandler}>
                 로그아웃
             </button>
+
+            <div>
+                <Gnb />
+                dd
+                <Footer />
+            </div>
         </div>
+        
+        
     )
 }
 

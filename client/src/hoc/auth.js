@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import Axios from 'axios';
 import {useDispatch} from 'react-redux';
 import {auth} from '../_actions/user_action';
 
-export default function (SpecificComponent, option, adminRoute = null ){
+export default function ( SpecificComponent, option, adminRoute = null){
     //option
     //null:아무나 출입이 가능한 페이지
     //true: 로그인한 유저만 출입 가능한 페이지
@@ -25,9 +24,11 @@ export default function (SpecificComponent, option, adminRoute = null ){
                 } else{
                     //로그인 한 상태
                     if(adminRoute && !response.payload.isAdmin) {
+                        //admin이 아니면 메인 화면으로 이동
                         props.history.push('/')
                     } else{
                         if(option === false){
+                            //로그인한 유저는 출입 불가능한 페이지
                             props.history.push('/')
                         }
                     }

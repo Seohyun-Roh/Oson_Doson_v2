@@ -1,30 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState} from 'react'
 import {useDispatch} from 'react-redux';
-import {registerUser} from '../../../_actions/user_action';
+import {loginUser} from '../../_actions/user_action';
 import {withRouter} from 'react-router-dom';
 
-function RegisterPage(props) {
+function LoginPage(props) {
     const dispatch = useDispatch();
 
     const [Email, setEmail] = useState("")
-    const [Name, setName] = useState("")
-    const [ConfirmPassword, setConfirmPassword] = useState("")
     const [Password, setPassword] = useState("")
 
     const onEmailHandler = (event) => {
         setEmail(event.currentTarget.value)
     }
 
-    const onNameHandler = (event) => {
-        setName(event.currentTarget.value)
-    }
-
     const onPasswordHandler = (event) => {
         setPassword(event.currentTarget.value)
-    }
-
-    const onConfirmPasswordHandler = (event) => {
-        setConfirmPassword(event.currentTarget.value)
     }
 
     const onSubmitHandler = (event) => {
@@ -32,26 +22,22 @@ function RegisterPage(props) {
         console.log(Email)
         console.log(Password)
 
-        if(Password !== ConfirmPassword){
-            return alert('비밀번호와 비밀번호 확인이 같지 않습니다.');
-        }
-
         let body = {
             email: Email,
-            name: Name,
             password: Password
         }
 
-        dispatch(registerUser(body))
+        dispatch(loginUser(body))
         .then(response => {
-            if(response.payload.success) {
-                props.history.push("/login")
+            if(response.payload.loginSuccess) {
+                props.history.push('/')
             } else{
-                alert("Failed to sign up")
+                alert('Error')
             }
         })
 
     }
+
     return (
         <div style={{display:'flex', justifyContent: 'center', alignItems: 'center',
         width: '100%', height:'100vh'}}>
@@ -60,22 +46,15 @@ function RegisterPage(props) {
             >
                 <label>Email</label>
                 <input type="email" value={Email} onChange={onEmailHandler} />
-                
-                <label>Name</label>
-                <input type="text" value={Name} onChange={onNameHandler}/>
-                
                 <label>Password</label>
                 <input type="password" value={Password} onChange={onPasswordHandler}/>
-                
-                <label>Comfirm Password</label>
-                <input type="password" value={ConfirmPassword} onChange={onConfirmPasswordHandler}/>
                 <br />
                 <button>
-                    회원가입
+                    Login
                 </button>
             </form>
         </div>
     )
 }
 
-export default withRouter(RegisterPage)
+export default withRouter(LoginPage)
