@@ -47,10 +47,15 @@ app.post('/api/users', upload.single('image'), (req, res) => {
   let userpw = req.body.userpw;
   let params = [image, name, birth, userid, userpw];
   
-  connection.query(sql, params,
-    (err, rows, fields) => { //성공적으로 데이터 입력되면 관련 메시지를 클라이언트에게 출력
-      res.send(rows);
-    })
+  bcrypt.hash(params[4], saltRounds, (err, hash) => {
+    params[4] = hash
+    connection.query(sql, params,
+      (err, rows, fields) => { //성공적으로 데이터 입력되면 관련 메시지를 클라이언트에게 출력
+        if(err) console.log(err)
+        
+        res.send(rows);
+      })
+  })
 })
 
 app.delete('/api/users/:id', (req, res) => {
