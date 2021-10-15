@@ -6,7 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-class CustomerDelete extends React.Component {
+class UserDelete extends React.Component {
 
     constructor(props){
         super(props);
@@ -27,9 +27,9 @@ class CustomerDelete extends React.Component {
         })
     }
 
-    deleteCustomer(id){
-        // api/customers/7 id가 7인 고객 데이터를 삭제
-        const url='/api/customers/' + id;
+    deleteUser(id){
+        // api/users/7 id가 7인 고객 데이터를 삭제
+        const url='/api/users/' + id;
         fetch(url, {
             method: 'DELETE'
         });
@@ -50,7 +50,7 @@ class CustomerDelete extends React.Component {
                         </Typography>
                     </DialogContent>
                     <DialogActions>
-                        <Button variant="contained" color="primary" onClick={(e) => {this.deleteCustomer(this.props.id)}}>삭제</Button>
+                        <Button variant="contained" color="primary" onClick={(e) => {this.deleteUser(this.props.id)}}>삭제</Button>
                         <Button variant="outlined" color="primary" onClick={this.handleClose}>닫기</Button>
                     </DialogActions>
                 </Dialog>
@@ -59,4 +59,4 @@ class CustomerDelete extends React.Component {
     }
 }
 
-export default CustomerDelete;
+export default UserDelete;
