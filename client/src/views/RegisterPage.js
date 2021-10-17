@@ -41,8 +41,15 @@ class Register extends React.Component {
         this.addUser()
             .then((response) => {
                 console.log(response.data);
-            })
-        this.props.history.push('/login');    
+                if(response.data.registerSuccess){
+                    // 회원가입 성공
+                    alert(response.data.message);
+                    this.props.history.push('/login');
+                } else{
+                    // 회원가입 실패
+                    alert(response.data.message);
+                }
+            })   
     }
 
     handleFileChange = (e) => {

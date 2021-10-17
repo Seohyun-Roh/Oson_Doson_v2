@@ -41,7 +41,8 @@ app.get('/api/users', (req,res) => {
 // upload 폴더를 사용자가 접근해서 프로필이미지를 확인할 수 있도록 함
 app.use('/image', express.static('./upload')) // image 폴더에서 해당 폴더에 접근할 수 있도록 함
 app.post('/api/users', upload.single('image'), (req, res) => {
-  let sql='INSERT INTO USER VALUES (null, ?, ?, ?, now(), 0, ?, ?)';
+  let sql1 = "SELECT * FROM USER WHERE userid = ?";
+  let sql2='INSERT INTO USER VALUES (null, ?, ?, ?, now(), 0, ?, ?)';
   let image = '/image/' + req.file.filename;
   let name = req.body.name;
   let birth = req.body.birth;
@@ -49,15 +50,28 @@ app.post('/api/users', upload.single('image'), (req, res) => {
   let userpw = req.body.userpw;
   let params = [image, name, birth, userid, userpw];
 
-  bcrypt.hash(params[4], saltRounds, (err, hash) => {
-    params[4] = hash
-    connection.query(sql, params,
-      (err, rows, fields) => { //성공적으로 데이터 입력되면 관련 메시지를 클라이언트에게 출력
-        if(err) console.log(err)
-        
-        res.send(rows);
+  connection.query(sql1, userid, (err, rows) => {
+    if(rows.length>0){
+      res.json({
+        registerSuccess: false,
+        message: "이미 존재하는 ID입니다."
       })
+    } else{
+      bcrypt.hash(params[4], saltRounds, (err, hash) => {
+        params[4] = hash
+        connection.query(sql2, params,
+          (err, rows, fields) => { //성공적으로 데이터 입력되면 관련 메시지를 클라이언트에게 출력
+            if(err) console.log(err)
+            
+            res.json({
+              registerSuccess: true,
+              message: "회원가입 성공!"
+            });
+          })
+      })
+    }
   })
+
 })
 
 // 회원 삭제 (isDeleted->1로 업데이트)
