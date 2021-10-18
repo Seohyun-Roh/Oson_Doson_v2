@@ -79,17 +79,17 @@ class MenuBar extends Component {
                     X
                 </MenuItem>
                 <MenuItem onClick={this.handleDrawerToggle}>
-                    <Link component={RouterLink} to="/">
+                    <Link component={RouterLink} to="/appt">
                     진료예약
                     </Link>
                 </MenuItem>
                 <MenuItem onClick={this.handleDrawerToggle}>
-                    <Link component={RouterLink} to="/">
+                    <Link component={RouterLink} to="/appt_check">
                     예약조회
                     </Link>
                 </MenuItem>
                 <MenuItem onClick={this.handleDrawerToggle}>
-                    <Link component={RouterLink} to="/">
+                    <Link component={RouterLink} to="/med_history">
                     진료내역조회
                     </Link>
                 </MenuItem>
