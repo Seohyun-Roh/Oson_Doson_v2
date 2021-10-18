@@ -48,7 +48,7 @@ class MenuBar extends Component {
     }
     
     handleButtonClick = (e) => {
-        this.props.history.push('/login')
+        //this.props.history.push('/login')
     }
     
     handleDrawerToggle = () => this.setState({toggle: !this.state.toggle})
@@ -66,7 +66,7 @@ class MenuBar extends Component {
                     오손도손🐾
                     </Typography>
                     <div className={classes.grow} />
-                    <Button color="inherit" onClick={this.handleButtonClick}>Login</Button>
+                    <Button color="inherit" component={RouterLink} to={'/login'}>Login</Button>
                 </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.toggle} className={classes.drawer}>
