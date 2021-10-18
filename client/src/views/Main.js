@@ -29,6 +29,13 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+  },
+  drawer:{
+    position: 'relative'
+  },
+  btnClose:{
+    position: 'absolute',
+    right: '4px'
   }
 })
 
@@ -63,11 +70,14 @@ class Main extends Component{
             <Button color="inherit" onClick={this.handleButtonClick}>Login</Button>
           </Toolbar>
         </AppBar>
-        <Drawer open={this.state.toggle}>
+        <Drawer open={this.state.toggle} className={classes.drawer}>
           <MenuItem onClick={this.handleDrawerToggle}>
             <Link component={RouterLink} to="/">
             Home
             </Link>
+          </MenuItem>
+          <MenuItem onClick={this.handleDrawerToggle} className={classes.btnClose}>
+              X
           </MenuItem>
           <MenuItem onClick={this.handleDrawerToggle}>
             <Link component={RouterLink} to="/">
