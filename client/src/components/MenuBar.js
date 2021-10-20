@@ -11,6 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Button from '@material-ui/core/Button';
 import Drawer from '@material-ui/core/Drawer';
 import MenuItem from '@material-ui/core/MenuItem';
+import LoginCheck from '../utils/LoginCheck';
 
 const styles = theme => ({
     root:{
@@ -36,6 +37,9 @@ const styles = theme => ({
     btnClose:{
       position: 'absolute',
       right: '4px'
+    },
+    hidden: {
+      display: 'none'
     }
   })
 
@@ -45,10 +49,6 @@ class MenuBar extends Component {
         this.state = {
           toggle: false
         }
-    }
-    
-    handleButtonClick = (e) => {
-        //this.props.history.push('/login')
     }
     
     handleDrawerToggle = () => this.setState({toggle: !this.state.toggle})
@@ -66,7 +66,7 @@ class MenuBar extends Component {
                     오손도손🐾
                     </Typography>
                     <div className={classes.grow} />
-                    <Button color="inherit" component={RouterLink} to={'/login'}>Login</Button>
+                    <LoginCheck />
                 </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.toggle} className={classes.drawer}>
