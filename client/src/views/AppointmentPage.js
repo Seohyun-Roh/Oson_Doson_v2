@@ -1,59 +1,35 @@
 import React, { Component } from 'react'
 import MenuBar from '../components/MenuBar';
-import { DatePicker, MuiPickersUtilsProvider, TimePicker } from "@material-ui/pickers";
-import MomentUtils from "@date-io/moment";
+import Calendar from '../components/Calendar';
+import Button from '@material-ui/core/Button';
 
 class AppointmentPage extends Component {
 
     constructor(props){
         super(props);
         this.state = {
-            selectedDate: null,
-            selectedTime: null,
-            checkedB: false
-        };
+            dateTime: ''
+        }
     }
 
-    handleDateChange = (date) => {
-        this.setState({ selectedDate: date });
-        console.log(this.state.selectedDate)
+    getDateTime = (text) => {
+        this.setState({
+            dateTime: text
+        });
     }
 
-    handleTimeChange = (time) => {
-        this.setState({ selectedTime: time });
-        console.log(this.state.selectedDate)
+    handleSubmit = () => {
+        console.log(this.state.dateTime)
     }
 
     render() {
-        const { classes } = this.props;
+        // const { classes } = this.props;
         return (
             <div>
                 <MenuBar />
                 진료 내역 확인 페이지
-                <div>
-                    <MuiPickersUtilsProvider utils={MomentUtils}>
-                    <TimePicker
-                        keyboard="true" placeholder="24 hours"
-                        clearable
-                        ampm={false}
-                        label="24 hours"
-                        value={this.state.selectedTime}
-                        onChange={this.handleTimeChange}
-                    />
-                    <DatePicker
-                        keyboard="true" placeholder="MM/DD/YYYY" format={"MM/DD/YYYY"}
-                        value={this.state.selectedDate}
-                        mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
-                        onChange={this.handleDateChange}
-                        disableopenonenter="true"
-                        animateYearScrolling={false}
-                        autoOk={true}
-                        clearable
-                        />
-                    <p>{JSON.stringify(this.state.selectedDate)}</p>
-                    <p>{JSON.stringify(this.state.selectedTime)}</p>
-                    </MuiPickersUtilsProvider>
-                </div>
+                <Calendar getDateTime={this.getDateTime}/>
+                <Button onClick={this.handleSubmit}>예약하기</Button>
             </div>
         )
     }
