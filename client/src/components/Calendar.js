@@ -7,7 +7,8 @@ function Calendar({getDateTime}) {
 
   const handleChangeValue = (val) => {
     handleDateChange(val);
-    getDateTime(val);
+    getDateTime(val.getFullYear(), val.getMonth(), val.getDate(), 
+    val.getHours(), val.getMinutes());
   }
 
   return (

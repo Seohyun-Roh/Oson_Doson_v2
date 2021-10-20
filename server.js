@@ -134,6 +134,18 @@ app.post('/api/animals', (req, res) => {
   })
 })
 
+// 동물 번호 반환 (입력: 동물 이름)
+app.post('/api/animals/animal_num', (req, res) => {
+  let animal_name = req.body.animal_name;
+  let sql = 'SELECT animal_num FROM ANIMAL WHERE animal_name = ?';
+
+  connection.query(sql, animal_name, (err, row) => {
+    if(err) console.log(err);
+
+    res.send(row);
+  })
+})
+
 // 병원 목록 반환
 app.get('/api/hospitals', (req, res) => {
   connection.query(
@@ -146,9 +158,35 @@ app.get('/api/hospitals', (req, res) => {
   )
 })
 
+// 병원 번호 반환 (입력: 병원 이름)
+app.post('/api/hospitals/h_num', (req, res) => {
+  let h_name = req.body.h_name;
+  let sql = 'SELECT h_num FROM HOSPITAL WHERE h_name = ?';
+
+  connection.query(sql, h_name, (err, row) => {
+    if(err) console.log(err);
+
+    res.send(row);
+  })
+})
 
 app.post('/api/appointment', (req, res) => {
-  // id, animal_num, h_num
+  // date_time, id, animal_num, h_num
+  let date_time = req.body.date_time;
+  let id = req.body.id;
+  let animal_num = req.body.animal_num;
+  let h_num = req.body.h_num;
+  let sql = 'INSERT INTO APPOINTMENT(date_time, id, animal_num, h_num) VALUES ( ?, ?, ?, ? )';
+  let params = [date_time, id, animal_num, h_num];
+
+  connection.query(sql, params, (err, row) => {
+    if(err) console.log(err)
+
+    res.json({
+      appointmentSuccess: true,
+      message: "예약 성공!"
+    });
+  })
 })
 
 app.listen(port, () => console.log(`Listening on Port ${port}`));
