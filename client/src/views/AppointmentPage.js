@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import MenuBar from '../components/MenuBar';
 import Calendar from '../components/Calendar';
 import AnimalLoad from '../components/AnimalLoad';
+import HospitalLoad from '../components/HospitalLoad';
 import Button from '@material-ui/core/Button';
 import axios from 'axios';
 
@@ -11,7 +12,8 @@ class AppointmentPage extends Component {
         super(props);
         this.state = {
             dateTime: '',
-            selectedAnimal:''
+            selectedAnimal: '',
+            selectedHospital: ''
         }
     }
 
@@ -28,10 +30,18 @@ class AppointmentPage extends Component {
         console.log(name)
     }
 
+    getSelectedHospital = (name) => {
+        this.setState({
+            selectedHospital: name
+        });
+        console.log(name)
+    }
+
     handleFormSubmit = (e) => {
         e.preventDefault()
         console.log(this.state.dateTime)
         console.log(this.state.selectedAnimal)
+        console.log(this.state.selectedHospital)
     }
 
     render() {
@@ -42,6 +52,7 @@ class AppointmentPage extends Component {
                 진료 내역 확인 페이지
                 <Calendar getDateTime={this.getDateTime}/>
                 <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
+                <HospitalLoad getSelectedHospital={this.getSelectedHospital}/>
                 <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>예약하기</Button>
             </div>
         )

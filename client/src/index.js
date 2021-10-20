@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
+import { CookiesProvider } from 'react-cookie';
 
 const theme = createTheme({
   typography: {
@@ -14,7 +15,9 @@ const theme = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <MuiThemeProvider theme={theme}>
-      <App />
+      <CookiesProvider>
+        <App />
+      </CookiesProvider>
     </MuiThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

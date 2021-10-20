@@ -23,7 +23,7 @@ const connection = mysql.createConnection({
 
 connection.connect();
 
-const multer = require('multer')
+const multer = require('multer');
 // 서버의 루트 폴더에 있는 upload 폴더를 사용자의 파일이 업로드가 되는 공간으로 설정
 const upload = multer({dest: './upload'}) 
 
@@ -98,8 +98,9 @@ app.post('/api/users/login', (req, res) => {
     if(row.length>0){ //ID가 존재하면
       bcrypt.compare(params[1], row[0].userpw, (err, result) => {
         if(result){
-          res.cookie("loginUser", userid).status(200).json({
+          res.cookie("loginUser", id).status(200).json({
             success: true,
+            id: id,
             userid: userid
           })
           console.log("성공")
@@ -119,6 +120,35 @@ app.post('/api/users/login', (req, res) => {
       console.log("id없음")
     }
   })
+})
+
+// 동물 목록 반환
+app.post('/api/animals', (req, res) => {
+  let id = req.body.id;
+  let sql = 'SELECT animal_num, animal_name FROM ANIMAL where id = ?';
+
+  connection.query(sql, id, (err, row) => {
+    if(err) console.log(err);
+
+    res.send(row);
+  })
+})
+
+// 병원 목록 반환
+app.get('/api/hospitals', (req, res) => {
+  connection.query(
+    'SELECT h_name FROM HOSPITAL', 
+    (err, rows, fields) => {
+      if(err) console.log(err)
+
+      res.send(rows);
+    }
+  )
+})
+
+
+app.post('/api/appointment', (req, res) => {
+  // id, animal_num, h_num
 })
 
 app.listen(port, () => console.log(`Listening on Port ${port}`));
