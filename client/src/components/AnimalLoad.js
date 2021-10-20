@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withCookies } from 'react-cookie';
-import Button from '@material-ui/core/Button';
 import { NativeSelect } from '@material-ui/core';
 import { InputLabel } from '@material-ui/core';
 import axios from 'axios';
@@ -35,7 +34,6 @@ class AnimalLoad extends Component {
     }
 
     handleSelectChange = (e) => {
-        console.log(e.target.value)
         this.setState({
             selectedAnimal: e.target.value
         })
