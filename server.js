@@ -98,9 +98,9 @@ app.post('/api/users/login', (req, res) => {
     if(row.length>0){ //ID가 존재하면
       bcrypt.compare(params[1], row[0].userpw, (err, result) => {
         if(result){
-          res.cookie("loginUser", id).status(200).json({
+          res.cookie("loginUser", row[0].id).status(200).json({
             success: true,
-            id: id,
+            id: row[0].id,
             userid: userid
           })
           console.log("성공")
