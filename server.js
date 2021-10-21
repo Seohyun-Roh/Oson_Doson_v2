@@ -225,4 +225,15 @@ app.post('/api/appointment/check', (req, res) => {
   )
 })
 
+// 진료 내역 확인
+app.post('/api/med_history', (req, res) => {
+  let animal_name = req.body.animal_name;
+  connection.query(
+    "SELECT * from CHART WHERE animal_num = ( SELECT animal_num FROM ANIMAL WHERE animal_name = ? )", animal_name,
+    (err, row) => {
+      res.send(row);
+    }
+  )
+})
+
 app.listen(port, () => console.log(`Listening on Port ${port}`));

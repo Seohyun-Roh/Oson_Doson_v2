@@ -37,7 +37,6 @@ class AppointmentCheckPage extends Component {
         const { cookies } = props;
         this.state = {
           users: '',
-          completed: 0,
           id: cookies.get('loginUser')
         }
     }
