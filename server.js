@@ -134,6 +134,18 @@ app.post('/api/animals', (req, res) => {
   })
 })
 
+// 동물 이름 반환 (입력: 동물 번호)
+app.post('/api/animals/animal_name', (req, res) => {
+  let animal_num = req.body.animal_num;
+  let sql = 'SELECT animal_name FROM ANIMAL WHERE animal_num = ?';
+
+  connection.query(sql, animal_num, (err, row) => {
+    if(err) console.log(err);
+
+    res.send(row);
+  })
+})
+
 // 동물 번호 반환 (입력: 동물 이름)
 app.post('/api/animals/animal_num', (req, res) => {
   let animal_name = req.body.animal_name;
@@ -158,6 +170,18 @@ app.get('/api/hospitals', (req, res) => {
   )
 })
 
+// 병원 이름 반환 (입력: 병원 번호)
+app.post('/api/hospitals/h_name', (req, res) => {
+  let h_num = req.body.h_num;
+  let sql = 'SELECT h_name FROM HOSPITAL WHERE h_num = ?';
+
+  connection.query(sql, h_num, (err, row) => {
+    if(err) console.log(err);
+
+    res.send(row);
+  })
+})
+
 // 병원 번호 반환 (입력: 병원 이름)
 app.post('/api/hospitals/h_num', (req, res) => {
   let h_name = req.body.h_name;
@@ -170,6 +194,7 @@ app.post('/api/hospitals/h_num', (req, res) => {
   })
 })
 
+// 진료 예약
 app.post('/api/appointment', (req, res) => {
   // date_time, id, animal_num, h_num
   let date_time = req.body.date_time;
@@ -187,6 +212,17 @@ app.post('/api/appointment', (req, res) => {
       message: "예약 성공!"
     });
   })
+})
+
+// 예약 내역 확인
+app.post('/api/appointment/check', (req, res) => {
+  let id = req.body.id;
+  connection.query(
+    "SELECT * FROM APPOINTMENT WHERE id = ?", id, 
+    (err, row) => {
+      res.send(row);
+    }
+  )
 })
 
 app.listen(port, () => console.log(`Listening on Port ${port}`));

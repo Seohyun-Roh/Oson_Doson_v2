@@ -9,7 +9,6 @@ class AnimalLoad extends Component {
         const { cookies } = props;
         this.state={
             loginUser: cookies.get('loginUser'),
-            selection : 1,
             animalNameList: [],
             selectedAnimal: ''
         }
