@@ -29,10 +29,33 @@ class LoginCheck extends Component {
         }
     }
 
+    handleLink = () => {
+        if(!this.state.isLogedIn){
+            return '/login';
+        }
+    }
+
+    handleSubmit = () => {
+        if(this.state.isLogedIn){
+            const { cookies } = this.props;
+        cookies.remove('loginUser');
+        this.stateRefresh();
+        }
+    }
+
+    stateRefresh = () => {
+        const { cookies } = this.props;
+        this.setState({
+            loginUser: cookies.get('loginUser'),
+            isLogedIn: false
+        })
+        window.location.reload();
+    }
+
     render() {
         return (
             <div>
-                <Button color="inherit" component={RouterLink} to={this.state.isLogedIn ? '/' : '/login'}>{this.state.isLogedIn ? 'Logout' : 'Login'}</Button>
+                <Button onClick={this.handleSubmit} color="inherit" component={RouterLink} to={this.handleLink}>{this.state.isLogedIn ? 'Logout' : 'Login'}</Button>
             </div>
         )
     }
