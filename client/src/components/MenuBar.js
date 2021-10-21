@@ -23,6 +23,7 @@ const styles = theme => ({
       [theme.breakpoints.up('sm')]: {
         display: 'block',
       },
+      textDecoration: 'none'
     },
     drawer:{
       position: 'relative'
@@ -55,7 +56,7 @@ class MenuBar extends Component {
                     <IconButton className={classes.menuButton} color="inherit" onClick={this.handleDrawerToggle}>
                     <MenuIcon />
                     </IconButton>
-                    <Typography className={classes.title} variant="h6" color="inherit" noWrap>
+                    <Typography className={classes.title} variant="h6" color="inherit" noWrap component={RouterLink} to="/">
                     오손도손🐾
                     </Typography>
                     <div className={classes.grow} />
@@ -63,29 +64,29 @@ class MenuBar extends Component {
                 </Toolbar>
                 </AppBar>
                 <Drawer open={this.state.toggle} className={classes.drawer}>
-                <MenuItem onClick={this.handleDrawerToggle}>
-                    <Link component={RouterLink} to="/">
-                    Home
-                    </Link>
-                </MenuItem>
-                <MenuItem onClick={this.handleDrawerToggle} className={classes.btnClose}>
-                    X
-                </MenuItem>
-                <MenuItem onClick={this.handleDrawerToggle}>
-                    <Link component={RouterLink} to="/appt">
-                    진료예약
-                    </Link>
-                </MenuItem>
-                <MenuItem onClick={this.handleDrawerToggle}>
-                    <Link component={RouterLink} to="/appt_check">
-                    예약조회
-                    </Link>
-                </MenuItem>
-                <MenuItem onClick={this.handleDrawerToggle}>
-                    <Link component={RouterLink} to="/med_history">
-                    진료내역조회
-                    </Link>
-                </MenuItem>
+                  <MenuItem onClick={this.handleDrawerToggle}>
+                      <Link component={RouterLink} to="/">
+                      Home
+                      </Link>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleDrawerToggle} className={classes.btnClose}>
+                      X
+                  </MenuItem>
+                  <MenuItem onClick={this.handleDrawerToggle}>
+                      <Link component={RouterLink} to="/appt">
+                      진료예약
+                      </Link>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleDrawerToggle}>
+                      <Link component={RouterLink} to="/appt_check">
+                      예약조회
+                      </Link>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleDrawerToggle}>
+                      <Link component={RouterLink} to="/med_history">
+                      진료내역조회
+                      </Link>
+                  </MenuItem>
                 </Drawer>
             </div>
         )
