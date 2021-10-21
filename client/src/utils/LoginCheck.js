@@ -32,6 +32,8 @@ class LoginCheck extends Component {
     handleLink = () => {
         if(!this.state.isLogedIn){
             return '/login';
+        } else {
+            return '/';
         }
     }
 
@@ -49,7 +51,6 @@ class LoginCheck extends Component {
             loginUser: cookies.get('loginUser'),
             isLogedIn: false
         })
-        window.location.reload();
     }
 
     render() {
