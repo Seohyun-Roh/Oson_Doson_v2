@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { withCookies } from 'react-cookie';
-import Button from '@material-ui/core/Button';
+import { Button } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 
 class LoginCheck extends Component {

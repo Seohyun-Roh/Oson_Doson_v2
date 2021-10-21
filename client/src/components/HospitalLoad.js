@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
-import { NativeSelect } from '@material-ui/core';
-import { InputLabel } from '@material-ui/core';
+import React, { Component } from 'react';
+import { NativeSelect, InputLabel } from '@material-ui/core';
 import axios from 'axios';
 
 class AnimalLoad extends Component {

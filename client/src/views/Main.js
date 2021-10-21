@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import '../App.css';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core';
 
+import '../App.css';
 import MenuBar from '../components/MenuBar';
 
 const styles = theme => ({

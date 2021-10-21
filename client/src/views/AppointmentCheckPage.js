@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+
 import MenuBar from '../components/MenuBar';
 
 class AppointmentCheckPage extends Component {

@@ -1,11 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { withCookies } from 'react-cookie';
+import { Button } from '@material-ui/core';
+import axios from 'axios';
+
 import MenuBar from '../components/MenuBar';
 import Calendar from '../components/Calendar';
 import AnimalLoad from '../components/AnimalLoad';
 import HospitalLoad from '../components/HospitalLoad';
-import { withCookies } from 'react-cookie';
-import Button from '@material-ui/core/Button';
-import axios from 'axios';
 
 class AppointmentPage extends Component {
 

@@ -1,8 +1,6 @@
 import React from 'react';
 import { post } from 'axios';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
+import { TextField, Button, withStyles } from '@material-ui/core';
 import { withRouter } from 'react-router';
 
 const styles = theme => ({

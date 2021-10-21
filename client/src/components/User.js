@@ -1,6 +1,6 @@
 import React from 'react';
-import TableRow from '@material-ui/core/TableRow';
-import TableCell from '@material-ui/core/TableCell';
+import { TableRow, TableCell } from '@material-ui/core';
+
 import UserDelete from './UserDelete';
 
 class User extends React.Component{
