@@ -115,7 +115,13 @@ class UserManagePage extends Component{
   }
 
   callApi = async () => {
-    const response = await fetch('/api/users');
+    const config = {
+      headers: {
+        'Accept': 'application/json'
+      }
+    }
+
+    const response = await fetch('/api/users', config);
     const body = await response.json();
     return body;
   }
