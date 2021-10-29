@@ -114,7 +114,6 @@ class AppointmentPage extends Component {
         return (
             <div>
                 <MenuBar />
-                진료 내역 확인 페이지
                 <Calendar getDateTime={this.getDateTime}/>
                 <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
                 <HospitalLoad getSelectedHospital={this.getSelectedHospital}/>
