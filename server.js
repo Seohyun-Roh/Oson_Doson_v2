@@ -28,7 +28,7 @@ const multer = require('multer');
 const upload = multer({dest: './upload'}) 
 
 // 회원 정보 출력(SELECT)
-app.get('/api/users', (req,res) => {
+app.get('/api/users/info', (req,res) => {
     connection.query(
       "SELECT * FROM USER WHERE isDeleted = 0",
       (err, rows, fields) => {

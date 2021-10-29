@@ -121,7 +121,7 @@ class UserManagePage extends Component{
       }
     }
 
-    const response = await fetch('/api/users', config);
+    const response = await fetch('/api/users/info', config);
     const body = await response.json();
     return body;
   }
