@@ -40,7 +40,7 @@ app.get('/api/users', (req,res) => {
 // 회원가입
 // upload 폴더를 사용자가 접근해서 프로필이미지를 확인할 수 있도록 함
 app.use('/image', express.static('./upload')) // image 폴더에서 해당 폴더에 접근할 수 있도록 함
-app.post('/api/users', upload.single('image'), (req, res) => {
+app.post('/api/users/register', upload.single('image'), (req, res) => {
   let sql1 = "SELECT * FROM USER WHERE userid = ?";
   let sql2='INSERT INTO USER VALUES (null, ?, ?, ?, now(), 0, ?, ?)';
   let image = '/image/' + req.file.filename;

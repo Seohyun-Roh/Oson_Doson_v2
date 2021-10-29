@@ -65,7 +65,7 @@ class Register extends React.Component {
     }
 
     addUser = () => {
-        const url = '/api/users';
+        const url = '/api/users/register';
         const formData = new FormData();
         formData.append('image', this.state.file); //해당 파일에 담겨 있는 바이트데이터를 image라는 이름으로 전송
         formData.append('name', this.state.userName);
