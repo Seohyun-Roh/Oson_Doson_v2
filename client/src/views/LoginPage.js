@@ -9,8 +9,13 @@ const styles = theme => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItem: 'center',
-        width: '100%',
         margin: '30px 30px 30px 30px'
+    },
+    register: {
+        display: 'flex',
+        justifyContent: 'right',
+        margin: '0px 30px 30px 30px',
+        textDecoration: 'underline'
     }
 });
 
@@ -48,13 +53,24 @@ class LoginPage extends React.Component {
         this.setState(nextState);
     }
 
+    handleButtonClick = (e) => {
+        e.preventDefault();
+        this.props.history.push('/register');
+    }
+
     render(){
         const { classes } = this.props;
         return (
-            <div className={classes.root}>
-                <TextField label="ID" type="text" name="userid" value={this.state.userid} onChange={this.handleValueChange} /><br/>
-                <TextField label="Password" type="password" name="userpw" value={this.state.userpw} onChange={this.handleValueChange} /><br/>
-                <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>Login</Button>
+            <div>
+                <div className={classes.root}>
+                    <h1>Login</h1>
+                    <TextField label="ID" type="text" name="userid" value={this.state.userid} onChange={this.handleValueChange} /><br/>
+                    <TextField label="Password" type="password" name="userpw" value={this.state.userpw} onChange={this.handleValueChange} /><br/>
+                    <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>Login</Button>
+                </div>
+                <div className={classes.register}>
+                    <Button variant="string" color="inherit" onClick={this.handleButtonClick}>회원가입</Button>
+                </div>
             </div>
         )
     }
