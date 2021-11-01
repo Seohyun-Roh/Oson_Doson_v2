@@ -9,7 +9,6 @@ const styles = theme => ({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItem: 'center',
-        width: '100%',
         margin: '30px 30px 30px 30px'
     },
     hidden: {
@@ -87,6 +86,7 @@ class Register extends React.Component {
         const { classes } = this.props;
         return (
             <div className={classes.root}>
+                <h1>Register</h1>
                 <input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} /><br/>
                 <label htmlFor="raised-button-file">
                     <Button variant="contained" color="primary" component="span" name="file">
