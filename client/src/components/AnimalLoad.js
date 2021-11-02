@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import { withCookies } from 'react-cookie';
-import { NativeSelect, InputLabel } from '@material-ui/core';
+import { NativeSelect, InputLabel, withStyles } from '@material-ui/core';
 import axios from 'axios';
+
+const styles = theme => ({
+    item:{
+        marginBottom: '20px',
+        marginTop: '20px'
+    }
+});
 
 class AnimalLoad extends Component {
     constructor(props){
@@ -42,8 +49,9 @@ class AnimalLoad extends Component {
     }
 
     render() {
+        const {classes} = this.props;
         return (
-            <div>
+            <div className={classes.item}>
                 <InputLabel>동물 이름</InputLabel>
                 <NativeSelect onChange={this.handleSelectChange}>
                     {
@@ -57,4 +65,4 @@ class AnimalLoad extends Component {
     }
 }
 
-export default withCookies(AnimalLoad);
+export default withCookies(withStyles(styles)(AnimalLoad));

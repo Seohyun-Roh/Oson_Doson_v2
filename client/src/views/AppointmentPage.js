@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 import { withCookies } from 'react-cookie';
-import { Button } from '@material-ui/core';
+import { Button, withStyles } from '@material-ui/core';
 import axios from 'axios';
 
 import MenuBar from '../components/MenuBar';
 import Calendar from '../components/Calendar';
 import AnimalLoad from '../components/AnimalLoad';
 import HospitalLoad from '../components/HospitalLoad';
+
+const styles = theme => ({
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItem: 'center',
+        justifyContent: 'center',
+        margin: '30px 30px 30px 30px'
+    },
+    button: {
+        width:'20%'
+    }
+});
 
 class AppointmentPage extends Component {
 
@@ -110,18 +123,20 @@ class AppointmentPage extends Component {
     }
 
     render() {
-        // const { classes } = this.props;
+        const { classes } = this.props;
         return (
             <div>
                 <MenuBar />
-                <Calendar getDateTime={this.getDateTime}/>
-                <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
-                <HospitalLoad getSelectedHospital={this.getSelectedHospital}/>
-                <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>예약하기</Button>
+                <div className={classes.root}>
+                    <Calendar getDateTime={this.getDateTime}/>
+                    <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
+                    <HospitalLoad getSelectedHospital={this.getSelectedHospital}/>
+                    <Button className={classes.button} variant="contained" color="primary" onClick={this.handleFormSubmit}>예약하기</Button>
+                </div>
             </div>
         )
     }
 }
 
 
-export default withCookies(AppointmentPage);
+export default withCookies(withStyles(styles)(AppointmentPage));
