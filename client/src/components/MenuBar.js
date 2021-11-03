@@ -8,8 +8,7 @@ import LoginCheck from '../utils/LoginCheck';
 
 const styles = theme => ({
     root:{
-      width:'100%',
-      overflowX:"auto"
+      padding:'10px 50px 0 50px'
     },
     menuBox: {
       display: 'flex',
@@ -22,18 +21,15 @@ const styles = theme => ({
       '& li':{
         color: 'black',
         listStyle: 'none',
-        margin: '0px 40px 10px 10px',
-        '&:last-child':{
-          marginRight: '50px'
-        },
+        margin: '0px 50px 10px 10px',
         '&:hover': {
           color: '#ff5252'
         }
       }
     },
     logo: {
-      width: '70px',
-      height: '70px'
+      width: '80px',
+      height: '80px'
     }
   })
 
@@ -51,7 +47,7 @@ class MenuBar extends Component {
         const {classes}=this.props;
         return (
             <div className={classes.root}>
-                <div className={classes.nav}>
+                <div>
                   <ul className={classes.menuBox}>
                     <div>
                       <Link component={RouterLink} to="/">
