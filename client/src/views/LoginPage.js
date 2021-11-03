@@ -122,27 +122,33 @@ class LoginPage extends React.Component {
         this.props.history.push('/register');
     }
 
+    keyPress = (e) => {
+        if(window.event.keyCode == 13){
+            this.handleFormSubmit(e);
+        }
+    }
+
     render(){
         const { classes } = this.props;
         return (
             <div>
                 <MenuBar />
-            <div className={classes.pageContainer}>
-                <div className={classes.loginFormBox}>
-                    <div className={classes.logo}>
-                        <img src={logo} alt="logo"/>
-                    </div>
-                    <div className={classes.loginForm}>
-                        <TextField label="ID" type="text" name="userid" value={this.state.userid} onChange={this.handleValueChange} /><br/>
-                        <TextField label="Password" type="password" name="userpw" value={this.state.userpw} onChange={this.handleValueChange} /><br/>
-                        <button className={classes.btnLogin} onClick={this.handleFormSubmit}>Login</button>
-                        <div className={classes.register}>
-                            <span>계정이 없으신가요?</span>
-                            <button className={classes.btnRegister} onClick={this.handleButtonClick}>회원가입</button>
+                <div className={classes.pageContainer}>
+                    <div className={classes.loginFormBox}>
+                        <div className={classes.logo}>
+                            <img src={logo} alt="logo"/>
+                        </div>
+                        <div className={classes.loginForm}>
+                            <TextField label="ID" type="text" name="userid" value={this.state.userid} onChange={this.handleValueChange} /><br/>
+                            <TextField label="Password" type="password" name="userpw" value={this.state.userpw} onChange={this.handleValueChange} onKeyPress={this.keyPress}/><br/>
+                            <button className={classes.btnLogin} onClick={this.handleFormSubmit}>Login</button>
+                            <div className={classes.register}>
+                                <span>계정이 없으신가요?</span>
+                                <button className={classes.btnRegister} onClick={this.handleButtonClick}>회원가입</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         )
     }
