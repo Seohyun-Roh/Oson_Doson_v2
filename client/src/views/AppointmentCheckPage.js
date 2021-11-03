@@ -8,8 +8,8 @@ import Appointment from '../components/Appointment';
 
 const styles = theme => ({
     root:{
-      width:'100%',
-      overflowX:"auto"
+      overflowX: 'auto',
+      margin: '20px 20px 20px 20px'
     },
     menu: {
       marginTop: 15,
@@ -67,28 +67,31 @@ class AppointmentCheckPage extends Component {
         const cellList = ["예약 날짜", "동물 이름", "병원 이름"];
 
         return (
-          <div className={classes.root}>
+          <div>
             <MenuBar />
-            <div className={classes.menu}>
-            </div>
-            <Paper>
-              <Table className={classes.table}>
-                <TableHead>
-                  <TableRow>
-                    {cellList.map(c => {
-                      return <TableCell className={classes.tableHead}>{c}</TableCell>
-                    })}
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                    {this.state.users ? 
-                        filteredComponents(this.state.users) :
+            <div className={classes.root}>
+              <h1>예약 확인</h1>
+              <div className={classes.menu}>
+              </div>
+              <Paper>
+                <Table className={classes.table}>
+                  <TableHead>
                     <TableRow>
-                        <TableCell colSpan="6" align="center"></TableCell>
-                    </TableRow> }
-                </TableBody>
-              </Table>
-            </Paper>
+                      {cellList.map(c => {
+                        return <TableCell className={classes.tableHead}>{c}</TableCell>
+                      })}
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                      {this.state.users ? 
+                          filteredComponents(this.state.users) :
+                      <TableRow>
+                          <TableCell colSpan="6" align="center"></TableCell>
+                      </TableRow> }
+                  </TableBody>
+                </Table>
+              </Paper>
+            </div>
           </div>
         );
     }

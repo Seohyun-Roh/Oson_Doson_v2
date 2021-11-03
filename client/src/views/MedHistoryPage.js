@@ -9,8 +9,8 @@ import MedHistory from '../components/MedHistory';
 
 const styles = theme => ({
     root:{
-      width:'100%',
-      overflowX:"auto"
+      overflowX: 'auto',
+      margin: '20px 20px 20px 20px'
     },
     menu: {
       marginTop: 15,
@@ -86,8 +86,9 @@ class MedHistoryPage extends Component {
         const cellList = ["차트 번호", "진료 날짜", "진료 내용", "병원 이름", "분류(접종, 진료)"];
 
         return (
-            <div className={classes.root}>
+          <div>
             <MenuBar />
+            <div className={classes.root}>
             <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
             <div className={classes.menu}>
             </div>
@@ -109,6 +110,7 @@ class MedHistoryPage extends Component {
                 </TableBody>
               </Table>
             </Paper>
+          </div>
           </div>
         )
     }
