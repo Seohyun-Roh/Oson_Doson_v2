@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Link as RouterLink } from 'react-router-dom';
-import { Link, AppBar, Toolbar, IconButton, Typography, Drawer, MenuItem, withStyles } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import { Link, withStyles } from '@material-ui/core';
 
 import '../App.css';
+import logo from '../img/logo.png';
 import LoginCheck from '../utils/LoginCheck';
 
 const styles = theme => ({
@@ -11,29 +11,29 @@ const styles = theme => ({
       width:'100%',
       overflowX:"auto"
     },
-    grow: {
-      flexGrow: 1,
+    menuBox: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between'
     },
-    menuButton: {
-      marginLeft: -12,
-      marginRight: 20,
+    menuItems: {
+      display: 'flex',
+      alignItems: 'center',
+      '& li':{
+        color: 'black',
+        listStyle: 'none',
+        margin: '0px 40px 10px 10px',
+        '&:last-child':{
+          marginRight: '50px'
+        },
+        '&:hover': {
+          color: '#ff5252'
+        }
+      }
     },
-    title: {
-      display: 'none',
-      [theme.breakpoints.up('sm')]: {
-        display: 'block',
-      },
-      textDecoration: 'none'
-    },
-    drawer:{
-      position: 'relative'
-    },
-    btnClose:{
-      position: 'absolute',
-      right: '4px'
-    },
-    hidden: {
-      display: 'none'
+    logo: {
+      width: '70px',
+      height: '70px'
     }
   })
 
@@ -51,43 +51,27 @@ class MenuBar extends Component {
         const {classes}=this.props;
         return (
             <div className={classes.root}>
-                <AppBar position="static">
-                <Toolbar>
-                    <IconButton className={classes.menuButton} color="inherit" onClick={this.handleDrawerToggle}>
-                    <MenuIcon />
-                    </IconButton>
-                    <Typography className={classes.title} variant="h6" color="inherit" noWrap component={RouterLink} to="/">
-                    오손도손🐾
-                    </Typography>
-                    <div className={classes.grow} />
-                    <LoginCheck />
-                </Toolbar>
-                </AppBar>
-                <Drawer open={this.state.toggle} className={classes.drawer}>
-                  <MenuItem onClick={this.handleDrawerToggle}>
+                <div className={classes.nav}>
+                  <ul className={classes.menuBox}>
+                    <div>
                       <Link component={RouterLink} to="/">
-                      Home
+                        <img src={logo} className={classes.logo} alt="logo"/>
                       </Link>
-                  </MenuItem>
-                  <MenuItem onClick={this.handleDrawerToggle} className={classes.btnClose}>
-                      X
-                  </MenuItem>
-                  <MenuItem onClick={this.handleDrawerToggle}>
-                      <Link component={RouterLink} to="/appt">
-                      진료예약
+                    </div>
+                    <div className={classes.menuItems}>
+                      <Link component={RouterLink} to="/appt" style={{textDecoration:'none'}}>
+                        <li>진료예약</li>
                       </Link>
-                  </MenuItem>
-                  <MenuItem onClick={this.handleDrawerToggle}>
-                      <Link component={RouterLink} to="/appt_check">
-                      예약조회
+                      <Link component={RouterLink} to="/appt_check" style={{textDecoration:'none'}}>
+                        <li>예약조회</li>
                       </Link>
-                  </MenuItem>
-                  <MenuItem onClick={this.handleDrawerToggle}>
-                      <Link component={RouterLink} to="/med_history">
-                      진료내역조회
+                      <Link component={RouterLink} to="/med_history" style={{textDecoration:'none'}}>
+                        <li>진료내역조회</li>
                       </Link>
-                  </MenuItem>
-                </Drawer>
+                      <li><LoginCheck /></li>
+                    </div>
+                  </ul>
+                </div>
             </div>
         )
     }
