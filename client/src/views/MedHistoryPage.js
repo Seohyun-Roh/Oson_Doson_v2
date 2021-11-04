@@ -8,28 +8,26 @@ import AnimalLoad from '../components/AnimalLoad';
 import MedHistory from '../components/MedHistory';
 
 const styles = theme => ({
-    root:{
-      overflowX: 'auto',
-      margin: '20px 20px 20px 20px'
-    },
-    menu: {
-      marginTop: 15,
-      marginBottom: 15,
-      display: 'flex',
-      justifyContent: 'center'
-    },
-    paper: {
-      marginLeft: 18,
-      marginRight: 18
-    },
-    tableHead: {
-      fontSize: '1.0rem'
-    },
-    inputRoot: {
-      color: 'inherit',
-      width: '100%',
-    }
-  })
+  pageContainer:{
+    backgroundColor: '#eff0f2',
+    height:'82vh'
+  },
+  root:{
+    overflowX: 'auto',
+    margin: '20px 70px 20px 70px'
+  },
+  paper: {
+    marginLeft: 18,
+    marginRight: 18
+  },
+  tableHead: {
+    fontSize: '1.0rem'
+  },
+  inputRoot: {
+    color: 'inherit',
+    width: '100%',
+  }
+})
 
 class MedHistoryPage extends Component {
 
@@ -88,29 +86,29 @@ class MedHistoryPage extends Component {
         return (
           <div>
             <MenuBar />
-            <div className={classes.root}>
-            <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
-            <div className={classes.menu}>
+            <div className={classes.pageContainer}>
+              <div className={classes.root}>
+                <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
+                <Paper>
+                  <Table className={classes.table}>
+                    <TableHead>
+                      <TableRow>
+                        {cellList.map(c => {
+                          return <TableCell className={classes.tableHead}>{c}</TableCell>
+                        })}
+                      </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.state.users ? 
+                            filteredComponents(this.state.users) :
+                        <TableRow>
+                            <TableCell colSpan="6" align="center"></TableCell>
+                        </TableRow> }
+                    </TableBody>
+                  </Table>
+                </Paper>
+              </div>
             </div>
-            <Paper>
-              <Table className={classes.table}>
-                <TableHead>
-                  <TableRow>
-                    {cellList.map(c => {
-                      return <TableCell className={classes.tableHead}>{c}</TableCell>
-                    })}
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                    {this.state.users ? 
-                        filteredComponents(this.state.users) :
-                    <TableRow>
-                        <TableCell colSpan="6" align="center"></TableCell>
-                    </TableRow> }
-                </TableBody>
-              </Table>
-            </Paper>
-          </div>
           </div>
         )
     }
