@@ -9,15 +9,62 @@ import AnimalLoad from '../components/AnimalLoad';
 import HospitalLoad from '../components/HospitalLoad';
 
 const styles = theme => ({
-    root: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItem: 'center',
-        justifyContent: 'center',
-        margin: '30px 30px 30px 30px'
+    loginForm: {
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'center',
+        marginRight:'40px',
+        paddingRight:'10px',
+        '& h2':{
+            margin:'0 0 30px 0'
+        }
     },
-    button: {
-        width:'20%'
+    pageContainer:{
+        display:'grid',
+        placeItems:'center',
+        height:'83vh',
+        backgroundColor:'#eff0f2'
+    },
+    loginFormBox:{
+        width:'85%',
+        maxWidth:'900px',
+        height:'75%',
+        maxHeight:'800px',
+        display:'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gridColumnGap: '20px',
+        boxShadow:'27px 43px 43px -26px rgb(89 89 89 / 39%)',
+        backgroundColor:'#ffffff',
+        borderRadius:'6px'
+    },
+    logo:{
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'center',
+        marginLeft:'20px',
+        '& img':{
+            width:'35vw',
+            height:'35vw',
+            maxWidth:'400px',
+            maxHeight:'400px',
+        }
+    },
+    btnLogin:{
+        width:'30%',
+        fontSize:'15px',
+        textAlign:'center',
+        textDecoration:'none',
+        fontFamily: 'Noto Sans KR',
+        height:'30px',
+        display:'inline-block',
+        border:'none',
+        borderRadius:'4px',
+        backgroundColor:'#d9d9d9',
+        '&:hover':{
+            cursor:'pointer',
+            backgroundColor:'#ffc000'
+        },
+        transition:'0.3s ease'
     }
 });
 
@@ -127,11 +174,19 @@ class AppointmentPage extends Component {
         return (
             <div>
                 <MenuBar />
-                <div className={classes.root}>
-                    <Calendar getDateTime={this.getDateTime}/>
-                    <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
-                    <HospitalLoad getSelectedHospital={this.getSelectedHospital}/>
-                    <Button className={classes.button} variant="contained" color="primary" onClick={this.handleFormSubmit}>예약하기</Button>
+                <div className={classes.pageContainer}>
+                    <div className={classes.loginFormBox}>
+                        <div className={classes.logo}>
+                            <img src='http://placedog.net/400/400' alt='logo' />
+                        </div>
+                        <div className={classes.loginForm}>
+                            <h2>진료 예약</h2>
+                            <Calendar getDateTime={this.getDateTime}/>
+                            <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
+                            <HospitalLoad getSelectedHospital={this.getSelectedHospital}/>
+                            <button className={classes.btnLogin} onClick={this.handleFormSubmit}>예약하기</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
