@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withCookies } from 'react-cookie';
-import { Button, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 import axios from 'axios';
 
 import MenuBar from '../components/MenuBar';
@@ -9,7 +9,7 @@ import AnimalLoad from '../components/AnimalLoad';
 import HospitalLoad from '../components/HospitalLoad';
 
 const styles = theme => ({
-    loginForm: {
+    appointmentForm: {
         display:'flex',
         flexDirection:'column',
         justifyContent:'center',
@@ -25,7 +25,7 @@ const styles = theme => ({
         height:'83vh',
         backgroundColor:'#eff0f2'
     },
-    loginFormBox:{
+    appointmentFormBox:{
         width:'85%',
         maxWidth:'900px',
         height:'75%',
@@ -37,7 +37,7 @@ const styles = theme => ({
         backgroundColor:'#ffffff',
         borderRadius:'6px'
     },
-    logo:{
+    dogImg:{
         display:'flex',
         flexDirection:'column',
         justifyContent:'center',
@@ -49,7 +49,7 @@ const styles = theme => ({
             maxHeight:'400px',
         }
     },
-    btnLogin:{
+    btnSubmit:{
         width:'30%',
         fontSize:'15px',
         textAlign:'center',
@@ -175,16 +175,16 @@ class AppointmentPage extends Component {
             <div>
                 <MenuBar />
                 <div className={classes.pageContainer}>
-                    <div className={classes.loginFormBox}>
-                        <div className={classes.logo}>
-                            <img src='http://placedog.net/400/400' alt='logo' />
+                    <div className={classes.appointmentFormBox}>
+                        <div className={classes.dogImg}>
+                            <img src='http://placedog.net/400/400' alt='dogImg' />
                         </div>
-                        <div className={classes.loginForm}>
+                        <div className={classes.appointmentForm}>
                             <h2>진료 예약</h2>
                             <Calendar getDateTime={this.getDateTime}/>
                             <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
                             <HospitalLoad getSelectedHospital={this.getSelectedHospital}/>
-                            <button className={classes.btnLogin} onClick={this.handleFormSubmit}>예약하기</button>
+                            <button className={classes.btnSubmit} onClick={this.handleFormSubmit}>예약하기</button>
                         </div>
                     </div>
                 </div>
