@@ -123,7 +123,7 @@ class LoginPage extends React.Component {
     }
 
     keyPress = (e) => {
-        if(window.event.keyCode == 13){
+        if(window.event.keyCode === 13){
             this.handleFormSubmit(e);
         }
     }
