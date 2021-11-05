@@ -180,7 +180,7 @@ class AppointmentPage extends Component {
                             <img src='http://placedog.net/400/400' alt='dogImg' />
                         </div>
                         <div className={classes.appointmentForm}>
-                            <h2>진료 예약</h2>
+                            <h2>진료 예약 🐶</h2>
                             <Calendar getDateTime={this.getDateTime}/>
                             <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
                             <HospitalLoad getSelectedHospital={this.getSelectedHospital}/>

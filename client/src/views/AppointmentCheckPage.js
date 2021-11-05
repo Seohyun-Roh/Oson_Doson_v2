@@ -69,7 +69,7 @@ class AppointmentCheckPage extends Component {
             <MenuBar />
             <div className={classes.pageContainer}>
               <div className={classes.root}>
-                <h1>예약 확인</h1>
+                <h1>예약 조회 🐾</h1>
                 <Paper>
                   <Table className={classes.table}>
                     <TableHead>

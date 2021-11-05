@@ -25,7 +25,10 @@ const styles = theme => ({
         flexDirection:'column',
         justifyContent:'center',
         marginRight:'40px',
-        paddingRight:'10px'
+        paddingRight:'10px',
+        '& h2':{
+            margin:0
+        }
     },
     pageContainer:{
         display:'grid',
@@ -160,7 +163,8 @@ class Register extends React.Component {
                             <img src={puppy} alt="puppy"/>
                         </div>
                         <div className={classes.loginForm}>
-                        <input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} /><br/>
+                            <h2>LOGIN 🐱</h2>
+                            <input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} /><br/>
                             <label htmlFor="raised-button-file">
                                 <Button variant="contained" component="span" name="file"
                                 style={{
@@ -180,20 +184,6 @@ class Register extends React.Component {
                         </div>
                     </div>
                 </div>
-                {/* <div className={classes.root}>
-                    <input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} /><br/>
-                    <label htmlFor="raised-button-file">
-                        <Button variant="contained" color="primary" component="span" name="file">
-                            {this.state.fileName === "" ? "프로필 이미지 선택" : this.state.fileName}
-                        </Button>
-                    </label>
-                    <br/>
-                    <TextField label="ID" type="text" name="userid" value={this.state.userid} onChange={this.handleValueChange} /><br/>
-                    <TextField label="Password" type="password" name="userpw" value={this.state.userpw} onChange={this.handleValueChange} /><br/>
-                    <TextField label="이름" type="text" name="userName" value={this.state.userName} onChange={this.handleValueChange} /><br/>
-                    <TextField label="생년월일" type="text" name="birth" value={this.state.birth} onChange={this.handleValueChange} /><br/>
-                    <Button variant="contained" color="primary" onClick={this.handleFormSubmit}>추가</Button>
-                </div> */}
             </div>
         )
     }

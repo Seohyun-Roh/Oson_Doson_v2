@@ -88,6 +88,7 @@ class MedHistoryPage extends Component {
             <MenuBar />
             <div className={classes.pageContainer}>
               <div className={classes.root}>
+                <h1>진료 내역 조회 🐾</h1>
                 <AnimalLoad getSelectedAnimalName={this.getSelectedAnimalName}/>
                 <Paper>
                   <Table className={classes.table}>

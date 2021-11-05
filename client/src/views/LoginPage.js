@@ -139,6 +139,7 @@ class LoginPage extends React.Component {
                             <img src={logo} alt="logo"/>
                         </div>
                         <div className={classes.loginForm}>
+                            <h2>LogIn 🐱</h2>
                             <TextField label="ID" type="text" name="userid" value={this.state.userid} onChange={this.handleValueChange} /><br/>
                             <TextField label="Password" type="password" name="userpw" value={this.state.userpw} onChange={this.handleValueChange} onKeyPress={this.keyPress}/><br/>
                             <button className={classes.btnLogin} onClick={this.handleFormSubmit}>Login</button>
