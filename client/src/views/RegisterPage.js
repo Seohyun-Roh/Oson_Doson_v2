@@ -163,7 +163,7 @@ class Register extends React.Component {
                             <img src={puppy} alt="puppy"/>
                         </div>
                         <div className={classes.loginForm}>
-                            <h2>LOGIN 🐱</h2>
+                            <h2>REGISTER 🐹</h2>
                             <input className={classes.hidden} accept="image/*" id="raised-button-file" type="file" file={this.state.file} value={this.state.fileName} onChange={this.handleFileChange} /><br/>
                             <label htmlFor="raised-button-file">
                                 <Button variant="contained" component="span" name="file"
