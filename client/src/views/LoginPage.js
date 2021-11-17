@@ -119,7 +119,7 @@ class LoginPage extends React.Component {
 
     handleButtonClick = (e) => {
         e.preventDefault();
-        this.props.history.push('/register');
+        this.props.history.push('/register_choice');
     }
 
     keyPress = (e) => {
