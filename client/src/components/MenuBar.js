@@ -4,7 +4,7 @@ import { Link, withStyles } from '@material-ui/core';
 
 import '../App.css';
 import logo from '../img/logo.png';
-import LoginCheck from '../utils/LoginCheck';
+import LoginCheckButton from './LoginCheckButton';
 
 const styles = theme => ({
     root:{
@@ -64,7 +64,7 @@ class MenuBar extends Component {
                       <Link component={RouterLink} to="/med_history" style={{textDecoration:'none'}}>
                         <li>진료내역조회</li>
                       </Link>
-                      <li><LoginCheck /></li>
+                      <li><LoginCheckButton /></li>
                     </div>
                   </ul>
                 </div>

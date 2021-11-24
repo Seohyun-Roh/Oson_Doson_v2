@@ -3,7 +3,7 @@ import { withCookies } from 'react-cookie';
 import { Button } from '@material-ui/core';
 import { Link as RouterLink } from 'react-router-dom';
 
-class LoginCheck extends Component {
+class LoginCheckButton extends Component {
     constructor(props){
         super(props);
         const { cookies } = props;
@@ -62,4 +62,4 @@ class LoginCheck extends Component {
     }
 }
 
-export default withCookies(LoginCheck);
+export default withCookies(LoginCheckButton);
