@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Main from "./views/Main";
 
@@ -19,23 +19,26 @@ function App() {
   return (
     <Router>
       <div>
-        <Switch>
-          <Route exact path="/" component={Main} />
-          <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/register_choice" component={RegisterChoicePage} />
-          <Route exact path="/user_register" component={UserRegisterPage} />
+        <Routes>
+          <Route exact path="/" element={<Main />} />
+          <Route exact path="/login" element={<LoginPage />} />
+          <Route
+            exact
+            path="/register_choice"
+            element={<RegisterChoicePage />}
+          />
+          <Route exact path="/user_register" element={<UserRegisterPage />} />
           <Route
             exact
             path="/hospital_register"
-            component={HospitalRegisterPage}
+            element={<HospitalRegisterPage />}
           />
+          <Route exact path="/appt" element={<AppointmentPage />} />
+          <Route exact path="/appt_check" element={<AppointmentCheckPage />} />
+          <Route exact path="/med_history" element={<MedHistoryPage />} />
 
-          <Route exact path="/appt" component={AppointmentPage} />
-          <Route exact path="/appt_check" component={AppointmentCheckPage} />
-          <Route exact path="/med_history" component={MedHistoryPage} />
-
-          <Route exact path="/usermanage" component={UserManagePage} />
-        </Switch>
+          <Route exact path="/usermanage" element={<UserManagePage />} />
+        </Routes>
       </div>
     </Router>
   );
