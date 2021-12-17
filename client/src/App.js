@@ -17,8 +17,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/register" component={UserRegisterPage} />
           <Route exact path="/register_choice" component={RegisterChoicePage} />
+          <Route exact path="/user_register" component={UserRegisterPage} />
           <Route exact path="/appt" component={AppointmentPage} />
           <Route exact path="/appt_check" component={AppointmentCheckPage} />
           <Route exact path="/med_history" component={MedHistoryPage} />
