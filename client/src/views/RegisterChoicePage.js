@@ -7,6 +7,11 @@ export default class RegisterChoicePage extends Component {
     this.props.history.push("/user_register");
   };
 
+  HospitalRegisterBtnClick = e => {
+    e.preventDefault();
+    this.props.history.push("/hospital_register");
+  };
+
   render() {
     return (
       <div>
@@ -17,7 +22,11 @@ export default class RegisterChoicePage extends Component {
         >
           일반 회원 회원 가입
         </Button>
-        <Button variant="contained" color="primary">
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={this.HospitalRegisterBtnClick}
+        >
           병원 회원 회원 가입
         </Button>
       </div>
